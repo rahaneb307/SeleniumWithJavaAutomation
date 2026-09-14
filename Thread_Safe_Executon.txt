@@ -1,0 +1,388 @@
+
+Design a scalable Selenium framework for 5+ teams working in parallel.
+
+
+
+selenium-framework
+│
+├── pom.xml
+│
+├── src/main/java
+│   └── framework
+│       ├── driver
+│       │   ├── DriverFactory.java
+│       │   └── DriverManager.java
+│       │
+│       ├── pages
+│       │   ├── BasePage.java
+│       │   └── LoginPage.java
+│       │
+│       └── utils
+│           └── ConfigReader.java
+│
+├── src/main/resources
+│   └── config.properties
+│
+└── src/test/java
+    └── tests
+        ├── BaseTest.java
+        └── LoginTest.java
+		
+		
+Selenium Framework
+                        |
+          +-------------+-------------+
+          |             |             |
+       Driver        Pages        Utilities
+          |             |             |
+      Factory       LoginPage    ConfigReader
+      Manager       HomePage     ExcelUtils		
+
+
+Create configuration file--
+
+browser=chrome
+url=https://www.example.com
+timeout=20
+environment=QA
+
+Create ConfigReader
+*********************
+
+package framework.utils;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+public class ConfigReader {
+
+    private static Properties properties;
+
+    static {
+
+        properties = new Properties();
+
+        try {
+
+            FileInputStream fis =
+                    new FileInputStream(
+                            "src/main/resources/config.properties");
+
+            properties.load(fis);
+
+            fis.close();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    public static String getProperty(String key) {
+
+        return properties.getProperty(key);
+    }
+}
+
+
+Create DriverFactory
+********************
+
+package framework.driver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class DriverFactory {
+
+    public static WebDriver createDriver(String browser) {
+
+        WebDriver driver;
+
+        switch (browser.toLowerCase()) {
+
+            case "chrome":
+
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
+
+            case "edge":
+
+                WebDriverManager.edgedriver().setup();
+                driver = new EdgeDriver();
+                break;
+
+            case "firefox":
+
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                break;
+
+            default:
+
+                throw new RuntimeException(
+                        "Browser not supported: " + browser);
+        }
+
+        driver.manage().window().maximize();
+
+        return driver;
+    }
+}
+
+Create ThreadLocal DriverManager
+********************************
+
+package framework.driver;
+
+import org.openqa.selenium.WebDriver;
+
+public class DriverManager {
+
+    private static ThreadLocal<WebDriver> driver =
+            new ThreadLocal<WebDriver>();
+
+    public static void setDriver(WebDriver webDriver) {
+
+        driver.set(webDriver);
+    }
+
+    public static WebDriver getDriver() {
+
+        return driver.get();
+    }
+
+    public static void quitDriver() {
+
+        if (driver.get() != null) {
+
+            driver.get().quit();
+
+            driver.remove();
+        }
+    }
+}
+
+Why ThreadLocal?
+Suppose TestNG runs:
+Test 1 → Thread 1 → Chrome
+Test 2 → Thread 2 → Chrome
+Test 3 → Thread 3 → Chrome
+
+Each thread gets its own driver.Without ThreadLocal, one test can accidentally interact with another test's browser.
+
+Create BaseTest
+***************
+
+package tests;
+
+import framework.driver.DriverFactory;
+import framework.driver.DriverManager;
+import framework.utils.ConfigReader;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+public class BaseTest {
+
+    @BeforeMethod
+    public void setUp() {
+
+        String browser =
+                ConfigReader.getProperty("browser");
+
+        WebDriver driver =
+                DriverFactory.createDriver(browser);
+
+        DriverManager.setDriver(driver);
+
+        driver.get(
+                ConfigReader.getProperty("url"));
+    }
+
+    @AfterMethod
+    public void tearDown() {
+
+        DriverManager.quitDriver();
+    }
+}
+
+
+Now every test automatically gets:
+
+@BeforeMethod
+      ↓
+Read browser
+      ↓
+Create driver
+      ↓
+Store driver in ThreadLocal
+      ↓
+Open application
+      ↓
+@Test
+      ↓
+@AfterMethod
+      ↓
+Quit driver
+
+Create BasePage
+**************
+package framework.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+public class BasePage {
+
+    protected WebDriver driver;
+
+    protected WebDriverWait wait;
+
+    public BasePage(WebDriver driver) {
+
+        this.driver = driver;
+
+        this.wait =
+                new WebDriverWait(
+                        driver,
+                        Duration.ofSeconds(20));
+    }
+
+    protected void click(By locator) {
+
+        wait.until(
+                ExpectedConditions
+                        .elementToBeClickable(locator))
+                .click();
+    }
+
+    protected void type(By locator, String value) {
+
+        WebElement element =
+                wait.until(
+                        ExpectedConditions
+                                .visibilityOfElementLocated(locator));
+
+        element.clear();
+
+        element.sendKeys(value);
+    }
+
+    protected String getText(By locator) {
+
+        return wait.until(
+                ExpectedConditions
+                        .visibilityOfElementLocated(locator))
+                .getText();
+    }
+}
+
+
+Create LoginPage
+****************
+package framework.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class LoginPage extends BasePage {
+
+    private By username =
+            By.id("username");
+
+    private By password =
+            By.id("password");
+
+    private By loginButton =
+            By.id("login");
+
+    public LoginPage(WebDriver driver) {
+
+        super(driver);
+    }
+
+    public void enterUsername(String usernameValue) {
+
+        type(username, usernameValue);
+    }
+
+    public void enterPassword(String passwordValue) {
+
+        type(password, passwordValue);
+    }
+
+    public void clickLogin() {
+
+        click(loginButton);
+    }
+
+    public void login(
+            String usernameValue,
+            String passwordValue) {
+
+        enterUsername(usernameValue);
+
+        enterPassword(passwordValue);
+
+        clickLogin();
+    }
+}
+
+Create Test class
+*****************
+
+package tests;
+
+import framework.driver.DriverManager;
+import framework.pages.LoginPage;
+
+import org.testng.annotations.Test;
+
+public class LoginTest extends BaseTest {
+
+    @Test
+    public void verifyLogin() {
+
+        LoginPage loginPage =
+                new LoginPage(
+                        DriverManager.getDriver());
+
+        loginPage.login(
+                "testuser",
+                "password");
+    }
+}
+
+The execution flow is:
+*********************
+
+LoginTest
+    ↓
+BaseTest.setUp()
+    ↓
+DriverFactory
+    ↓
+DriverManager
+    ↓
+Chrome
+    ↓
+LoginPage
+    ↓
+login()
+    ↓
+BaseTest.tearDown()
+    ↓
+quit()
