@@ -1,0 +1,65 @@
+Singleton Design Patteren
+
+public class Shape
+	{
+
+		private static Shape s=null;
+		
+		private Shape(){}
+
+		public static Shape getInstance()
+
+				{
+
+				if(s==null)
+					{
+
+					return new Shape();						
+
+					}
+					else
+					{
+
+					return s;
+					
+					}	
+				
+				}	
+
+	}
+
+------------------------------------------------------------------------------
+
+Interface tricky question default/static 
+1) Interfaces cannot have non-default / non-static methods with bodies.
+2)An interface method with a body must be either: default / static
+3) Class C cannot call A.super.show() directly (Use @Override)
+   But calling an interface's default method must happen inside a method, not directly inside the class body.
+4)
+
+package StringPrograms;
+
+public interface A {
+    default void show() {
+        System.out.println("A");
+    }
+}
+
+public interface B {
+    default void show() {
+        System.out.println("B");
+    }
+}
+
+public class C implements A, B {
+    @Override
+    public void show() {
+        A.super.show();   // or B.super.show()
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        new C().show();
+    }
+}

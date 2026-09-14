@@ -1,0 +1,25 @@
+public class CrossBrowseing()
+public static WebDriver driver=null;
+
+{
+private CrossBrowseing()
+	{
+
+	}
+@Parameter("browser")
+public static void setUp(String browser)
+		{
+		if(driver==null)
+			{
+				if(browser.equals("chrome"))
+					{
+						WebDriver.ChromeDriver().setUp();
+						driver= new ChromeDriver();
+					}else if(browser.equals("chrome"))
+			}
+			
+		}
+
+}
+
+//For singleton design patteren create private constructor,static method and private data member

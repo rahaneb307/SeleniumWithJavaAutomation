@@ -1,0 +1,104 @@
+Agile Model/Agile Methodology/Agile Process
+--------------------------------------------------
+It is an iterative and inceramental approch.
+It is an iterative and inceramental process.
+In Agile proccess happnes good communication between customer,bussiness anyalysit, developer and tester.
+
+
+Agile Principles
+-----------------
+1) Customer no need to wait for long time deliver to whole product.
+2) We develop, test and release pice of software to the customer with few number of features(Stories).
+3) In agile process accept the customer requirements and implements.
+
+Advantages
+------------
+1) Requirement/changes are allowed in any stage of developement or we can implement requirement changes in the middleof the development.
+2) Realeses will be very fast(weekly)
+3) Customer no need to wait for long time deliver to whole product.
+4) Good communication between team.
+5) It is very easy model to adopt.
+
+Disadvantage
+------------
+Less focus on design and documentation sice we deliver software very fast.
+
+Scrum
+-------
+Scrum is framework through which we build software product by following agile principles.
+Scrum inculdes group of peoples called as Scrum Team . Normally contains 5-9 members.
+
+1) Product Owner
+2) Scrum Master
+3) Dev Team
+4) QA Team
+
+
+Roles of Scrum Team
+--------------------
+Product Owner
+            Defines the features of the product
+            Prioritize features according to market value 
+            Adjust features and priority every iteration ,as need
+            Accept or reject work result.
+
+Scrum Master
+           The main role is facilitating and driving the agile process.
+
+Developers and QA
+           Develop and test the software.
+
+IMP tearms 
+-------------
+
+1) User Story : A feature / module in software.
+
+2) Epic : Collection of user story.
+
+3) Product Backlock : Contains list of user strories. Prepared by product owner.
+
+4) Sprint / Iteration : Period of time to complete the user stories, decided by the product owner and Sprint usually 2-4 week of time.
+
+5) Sprint Backlog : List of completed user story  by Dev and QA for specific sprint .
+
+6) Sprint Planning Meeting : Meeting conduct with the team to define what can be deleviered in the sprint and duration.
+
+7) Scrum Meeting : Meeting conducted by the scrum Master everyday 15 mins. called as scrum call/standup meeting.
+                   What did you do Yesterday
+                   What will you do today
+                   Are there any issue to complete your task in your way ?
+8) Sprint Restrospective : Conduct meeting after completion of sprint . The entire team , including both the scrum master and the product 
+                           owner should be participate .
+
+9) Story Point :  Rough estimation of user stories , will be given by Dev and QA in the form of fibonacci series . 
+                  Ex - 0 1 1 2 3 5 8..........
+                  1 stroy point = 1 hour / 1 day(6 hours)
+                  Login ----> Dev-5   QA-3    = 8 hours / 1 day
+10) Burndown Chart :  shows how much work remaining in the sprint. Maintain by the scrum master daily .
+
+11) What is the Agile Ceremonies?
+--> An Agile ceremony is an event in the Agile process when your team meets to discuss what their next course of action is.
+    The primary focus of an Agile ceremony is to increase communication within an Agile or Scrum team to ensure everyone is on the same page.
+   
+    1) Sprint Planning Meeting : Meeting conduct with the team to define what can be deleviered in the sprint and duration.
+
+    2) Growming Meeting	       :In growminig meeting disscuss about backlogs(sprint backlogs/product backlogs)
+				Backlog grooming is a regular session where backlog items are discussed, reviewed, and
+				prioritized by product managers, product owners, and the rest of the team. The primary
+				goal of backlog grooming is to keep the backlog up-to-date and ensure that backlog items are prepared for upcoming sprints.
+   
+    2) Scrum Meeting : 	         Meeting conducted by the scrum Master everyday 15 mins. called as scrum call/standup meeting.
+                       		 What did you do Yesterday
+                      		 What will you do today
+                                 Are there any issue to complete your task in your way ?
+
+    3) Sprint Review Meeting:    Reviewing the goal for the sprint
+			         Demonstrating new features implemented during the sprint
+		                 Requesting feedback from the stakeholders
+			         Discussing work not yet accomplished			
+
+    4) Sprint Restrospective : Conduct meeting after completion of sprint . The entire team , including both the scrum master and the product 
+                               owner should be participate .Think about what went well and what could be improved for next time.
+
+ 
+

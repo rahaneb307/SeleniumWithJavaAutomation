@@ -1,0 +1,113 @@
+
+ 1)Character occurance and count from string using collection
+ o/p ={a=2, b=1, c=1, d=1}
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+       String str="abcda sfdfg";
+       Map<Character,Integer>map=new HashMap<Character,Integer>();
+       char arr[]=str.toCharArray();
+       for(int i=0;i<arr.length;i++)
+       {
+           if(map.containsKey(arr[i]))
+           {
+               int count=map.get(arr[i]);
+               map.put(arr[i],count+1);
+           }
+           else
+           {
+               map.put(arr[i],1);
+           }
+       }
+       System.out.println(map);
+    }
+}
+----------------------------------------------------------------------------------------------
+2)word occurance and count from string using collection
+o/p =  {java=2, nic=1, hello=2}                  
+
+public static void main(String[] args) {
+		String str = "java java hello hello nic";
+		int arr2[]= {6,6,6,6,10,12,3,5,6};
+		//Arrays.sort(arr2);
+		Map<String, Integer> hs = new HashMap<String, Integer>();
+		String arr[] = str.split(" ");
+		for (int i = 0; i < arr.length; i++)
+		{
+			if (hs.containsKey(arr[i])) 
+			{
+				int count = hs.get(arr[i]); 
+				hs.put(arr[i], count + 1);
+
+			} 
+			else 
+			{
+				hs.put(arr[i], 1);
+			}			
+		}
+		System.out.println(hs);
+
+	}
+	
+	-------------------------------------------------------------------------------------------------
+	
+3)Each word reverse from String 
+o/p = behasalaB enahaR
+
+class HelloWorld {
+    public static void main(String[] args) {
+        String str="Balasaheb Rahane";
+        String arr[]=str.split(" ");
+        for(int i=0;i<arr.length;i++)
+        {
+            String output="";
+            char ch[]=arr[i].toCharArray();
+            for(int j=ch.length-1;j>=0;j--)
+            {
+                output+=ch[j];
+            }
+            System.out.print(output+" ");
+        }
+    }
+}
+
+Another way
+
+class HelloWorld {
+    public static void main(String[] args) {
+
+        String str = "Balasaheb Rahane";
+
+        String[] arr = str.split(" ");
+
+        for (String word : arr) {
+            StringBuilder sb = new StringBuilder(word);
+            System.out.print(sb.reverse() + " ");
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------
+4)Removes deuplicate elements from List
+
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+      List<String>list=new ArrayList<String>();
+      Set<String>output=new LinkedHashSet<String>();
+      list.add("Java");
+      list.add("World");
+      list.add("Java");
+      list.add("Program");
+      System.out.println(list);
+      for(String o: list)
+      {
+          
+          if(!output.contains(o))
+          {
+              output.add(o);
+          }
+          
+      }
+      System.out.println(output);
+    }
+}

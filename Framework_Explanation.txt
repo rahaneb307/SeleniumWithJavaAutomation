@@ -1,0 +1,52 @@
+
+My self Balasaheb Rahane. I have total 7 years of experience in testing. In that 4 years in automation testing and remaining in manual testing.
+I have completed my post-graduation from PVP College Pravaranagar Ahmednagar. Now I am live in Pune district Maharashtra state.
+My last organization is Synechrone Technologies Pvt Ltd in that I worked as QA engineer on project Riskconnect clear sight.
+
+About Project- Riskconnect clear sight is insurance related project.Provide user different types of insurance plan and maintained there data in system.
+
+Programming Language : I have used Java as programming language in my project.
+
+Framework type : We have used TestNG as a unit testing framework with Data driven approach &
+                 design pattern used is Page Object Model.
+
+POM :            we have maintained class for every webpage.That class hold the page sepcific 
+                 functionality.Also seperate classes for every test.
+
+Packages:        We have seperate packeges for pages,Test class,properties file,utility functions,driver,excel file.
+
+Properties File: In properties file we have store the  all xpath.Default user name passsword.URL.
+
+BasePage Package : In basepage driver initialization methods there.All other pages are extends the base page methods.
+
+Common Function : We have seperate package for common functions so that other page classes can use it.
+                 Like sendKaeys,click,explicit wait,scroll function,takeScreenshot,read excel data,get text.
+
+Common Constant:  In common constant package stored the constant like properties file path,driver path,url path,Excel file path
+
+Driver Package : In this package maintained the driver copy at user directory level.Like Chrome,Firefox,IE.
+
+Input Package  : We have maintain the input data in the form of excel data.
+
+Utility Package: In this utility package write utility functions linke take screen shot of fail test case, read data from excel file
+
+Test Package :   All test case write in this package.For every page functionality seperate test class. I have used thestNG annotations,assertions.
+
+Reporting :  For reporting used ExtentHTMlReport library.
+
+•	Understanding and Analyzing the Application Under Test in terms of Object Identification.
+•	Understanding Test scenarios and Collecting Test Data.
+•	Identifying end-to-end scenarios and code modularity.
+•	Implementing TestNG Test Automation framework and developing automation infrastructure.
+•	Creating Test Scripts using Element locators, WebDriver methods, Java programming concepts, and TestNG Annotations.
+•	Error Handling, Adding comments.
+•	Creating Data-driven Tests and Running through the framework.
+•	Cross Browser Testing (Executing test cases against various browsers like Mozilla Firefox, Google Chrome, IE and Safari, etc…).
+•	Parallel Test Execution.
+•	Creating test case report.
+•	Modifying Test Automation Resources and Maintenance of Resources.
+
+
+
+
+

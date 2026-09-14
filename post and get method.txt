@@ -1,0 +1,72 @@
+Post and get method
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.path.json.JsonPath;
+
+import java.util.HashMap;
+
+public class PostAndGetExample {
+
+    public static void main(String[] args) {
+
+        // Base URI
+        RestAssured.baseURI = "https://reqres.in";
+
+        //==========================
+        // POST Request
+        //==========================
+
+        HashMap<String, Object> payload = new HashMap<>();
+
+        payload.put("name", "Balasaheb");
+        payload.put("job", "Automation Tester");
+
+        Response postResponse = RestAssured
+                .given()
+                .header("Content-Type", "application/json")
+                .body(payload)
+                .when()
+                .post("/api/users");
+
+        // Validate Status Code
+        postResponse.then().statusCode(201);
+
+        System.out.println("POST Response:");
+        System.out.println(postResponse.getPrettyPrint());
+
+        // Extract ID from POST Response
+        JsonPath postJson = new JsonPath(postResponse.asString());
+
+        String id = postJson.getString("id");
+
+        System.out.println("Generated User ID : " + id);
+
+        //==========================
+        // GET Request
+        //==========================
+
+        Response getResponse = RestAssured
+                .given()
+                .header("Content-Type", "application/json")
+                .when()
+                .get("/api/users/2");
+
+        getResponse.then().statusCode(200);
+
+        System.out.println("\nGET Response:");
+        System.out.println(getResponse.getPrettyPrint());
+
+        // Extract values from GET Response
+        JsonPath getJson = new JsonPath(getResponse.asString());
+
+        String firstName = getJson.getString("data.first_name");
+        String lastName = getJson.getString("data.last_name");
+        String email = getJson.getString("data.email");
+
+        System.out.println("\nUser Details");
+        System.out.println("First Name : " + firstName);
+        System.out.println("Last Name  : " + lastName);
+        System.out.println("Email      : " + email);
+    }
+}

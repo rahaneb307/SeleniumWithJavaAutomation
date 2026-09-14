@@ -1,0 +1,13 @@
+ Steps-How to create job in jenkins
+-----------------------------------
+1) Login to Jenkins
+2) Click on “New Item” at the top left-hand side of your dashboard.
+3) Enter Item details      --- Enter the name of the item you want to create
+                               Select Project(Free Style,Jenkins Pipeline Project) and click on ok button
+
+4) Enter Project details  --   Enter the details of the project you want to test.
+
+5) Enter repository URL  --- Location git repository
+6) Click on Build option and click on build step--> enter command like(mvn test)
+7) Bulid source code
+8) Check the status of the build project. 

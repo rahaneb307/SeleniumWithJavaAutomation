@@ -1,0 +1,60 @@
+years of experience in Automation testing,Selenium,WebDriver,Framework development,
+java,TestNG,Maven,Jenkins,SVN,GIT,API Testing,WebServices,Regression,Page Object Model,Agile,Scrum,
+sql,BDD,Appium,cucumber,Mobile Testing,Banking and Finance,Manual Testing
+
+Advanced concepts of Cucumber 
+https://www.toolsqa.com/cucumber/cucumber-tags/
+
+
+
+                                         Interview Asked Questions
+---------------------------------------------------------------------------------------------------------------------------
+Core Java
+---------
+1)What is collection?
+2)What is difference between Array List and List?
+3)What is collection interface type ?
+4)What is constructor?
+5)what is constructor overloading?
+6)Can we override constructor in java?
+7)What is Difference between for loop and while loop?
+8)What is Difference between  while loop and do while loop?
+9)What is String , String Buffer , String Builder?
+10)What is Difference between String , String Buffer , String Builder?
+12)What is Encapsulation?
+13)What is Abstraction?
+14)What is Difference between Encapsulation and Abstraction ?
+15)What is principle of oops?
+16)What is Use of Final keyword in java?
+17) Can we declare method final? 
+
+
+Automation Interview Questions?
+--------------------------------
+1)Which Framework you have used in your project?
+2)What is Difference between FindElement and FindElements?
+3)what is difference between css and xpath?
+4)What is page object model? How you can achive page object model in your project?
+5)What is Page factory?
+6)What is data driven approch? How we can achive data driven approch?
+7)How can you achive mouse simulation in selenium?
+8)How to automate drop down in selenium? Specify method name ?
+9)How to handle browse window in selenium? Specify method name ?
+10)How to handle alert in selenium? Specify method name ?
+11)What is cucumber?
+12)What is use of tag in Runner class?
+13)What tags contains Runner class?
+14)What is the purpose of glue property?
+15)What is the purpose of features property?
+16)What is the use of Runner class?
+17)What is Maven?
+18)What is Jenkins?
+19)How we can use Build Maven project in jenkins?
+20)Which annotation used for data provider in selenium?
+
+
+
+
+
+
+

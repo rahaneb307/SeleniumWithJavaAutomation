@@ -1,0 +1,105 @@
+How to handale Alert In Selenium
+-----------------------------------------
+
+driver.switchTo().alert().accept();
+deiver.switchTo().alert().dismiss();
+driver.switchTo().alert().getText();
+driver.switchTo().alert().sendKeys();
+
+-------------------------------------------
+
+Switching frame 
+-------------------------------------------
+
+1)driver.switchTo().frame(frame id);
+2)driver.switchTo().frame(iframe name or id);
+3)driver.switchTo().frame(WebElement of frame);
+
+Example
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
+
+public class FrameExample {
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://example.com");
+
+        // Get all iframe elements
+        List<WebElement> frames = driver.findElements(By.tagName("iframe"));
+
+        System.out.println("Total Frames: " + frames.size());
+
+        for (int i = 0; i < frames.size(); i++) {
+
+            // Switch to frame
+            driver.switchTo().frame(i);
+
+            try {
+                WebElement element = driver.findElement(By.id("username"));
+                element.sendKeys("Balasaheb");
+
+                System.out.println("Element found in Frame Index: " + i);
+
+                // Switch back to parent frame
+                driver.switchTo().parentFrame();
+                break;
+
+            } catch (Exception e) {
+                // Element not found in this frame
+                driver.switchTo().defaultContent();
+            }
+        }
+
+        driver.quit();
+    }
+}
+
+---------------------------------------------------------------------
+Waits
+
+1) Implicit wait
+   driver.manage().timeouts().impliciylyWait(30,TimeUnit.SECONDS);
+   
+ 2) ExplicitWait
+    WebDriverWait wait= new WebDriverWait(driver,Duration.OfSeconds(10));
+	WebElement ele = wait.until(ExpectedConditions.visibilityOfElementLocated(By.(xpath("")));
+	
+3) FluentWait
+
+FluentWait wait= new FluentWait(driver);
+
+.withTimeout(Duration.OfSeconds(10))
+.pollingEvery(Duration.OfSeconds(15))
+.ignoring(NoSchElementException.class);
+WebElement foo= wait.until(new Function(){
+public WebElement apply(WebDriver driver){
+return driver.findelement(By.xpath(""))
+}
+
+})
+
+------------------------------------------------
+Take ScreenShot of fail testcase
+
+public void tearDown(ItestResult result)
+{
+if(result.getStatus==result.FAILURE)
+{
+ScreeenShotUtility(WebDriver driver,result.getName);
+}
+}
+
+public static void ScreeenShotUtility(Webdriver driver,String screenshotName)
+{
+TakesScreenshot ts= (TakesScreenshot)driver;
+File source= ts.getScreeenshotAs(OutputRype.FILE);
+FileUtils.copyFile("./ScreenShot"+screenshotName+".png");
+
+

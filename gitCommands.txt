@@ -1,0 +1,34 @@
+git init  ---to initailize local repository
+git config --global user.name  ---name,e.g. jayshri
+git config --global user.email  ---jayashri.dhus@canwilltech.com
+clear ---clears all commands
+ls -lart  ---shows hidden files in folder
+git status ---shows git branch name & files status,untracked,tracked,modified,etc 
+touch about.html  ---new file created bydefault those files are untracked git not able to track
+----git status command gives all untracked files
+git add about.html ----git able to track this file
+git add -A ---git track all untracked files(means send all files into staging area(ready to commit files are in staging area))
+git commit -m "Commit message"  ---commit staged files
+git checkout about.html   ---if file data is lost locally after commit then this command revert those file changes  are commited
+git checkout -f   ---all files are checkout
+git log   ---shows commit information user name,email,commit message,time,etc
+git log -p -2  ---shows last two commit chnages
+git commit -a -m "skip staging area direct commit"    ---without staging files direct commit
+git -rm cached about.html   ---unstages file means untracked file
+git rm --cached about.html  ---removes file from staging area
+git rm -f delete.html   ---removes file from hard drive
+git commit -m "commit unstaged file"  ---commit unstaged files
+git commit -m "delete file"  ---after file delete commit
+git status -s   ----git status in short hand
+git branch   ---shows current branch
+git branch updatecode  ----new updatecode branch is created
+git checkout updatecode  ----switched to updatecode branch
+git branch -d branchname  ---deletes branch
+git merge updatecode ---master updatecode branch merged into matser branch
+git checkout -b nodeintegration   ----this creates new branch & switched to this new branch
+git push origin master  ---push branch cahnages to remote repository
+git pull origin master  ---pull cahnages from remote repository
+
+
+git is nothing but a distributed version control,version control helps developer to track & manage changes to a s/w project
+github is a code hosting platform for version control & collabration

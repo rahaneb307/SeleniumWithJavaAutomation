@@ -1,0 +1,11 @@
+select * from dbo."ScheduledTaskType" order by "Id" desc   ----78,,,2,3,,,4,7,,,,
+select * from dbo."ScheduledTaskTypeSubTasks" where "ScheduledTaskTypeId"=76  ----163,164
+
+select * from dbo."ScheduledTask" where "ScheduledTaskTypeId"=76--- order by "Id" desc  ---53
+select * from dbo."ScheduledTaskSubTasks" where "ScheduledTaskId"=53  ----243,244
+
+select * from dbo."PatientScheduledTask" where "ScheduledTaskTypeId"=76 ---"ScheduledTaskId"=53   ---132
+select * from dbo."PatientScheduledTaskSubTasks" where "PatientScheduledTaskId"=25   ----978,979
+
+select * from dbo."NurseCall" order by "Id" desc  ----384
+select * from dbo."NurseCallSubTasks" where "NurseCallId"=131   ----753,754

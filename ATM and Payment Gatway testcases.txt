@@ -1,0 +1,57 @@
+A) What will you do if you found defect at the end of sprint?
+1)	Being QA, I will start with filing the bug and assign to concern person with max details I can (Title, Description with Steps to reproduce, Platform,
+	 Build version, System details where I observed behaviour, Occurrence, Logs, Screenshots if req., Link with Feature/Parent ticket etc)
+2)	QA Lead/ Manager/Scrum master i.e. responsible person with authority will analyse the impact of the bug.
+4)	After impact analysis, If found blocker team & concern developer will work on it in order to resolve/fix on priority
+5)	Being QA we can help in impact analysis & to developer by providing more information. Even helping them & check our other areas if impacted
+6)	Based on Severity (Severity is basically a parameter that denotes the total impact of a given defect on any software) and Priority 
+	(Priority is basically a parameter that decides the order in which we should fix the defects) Manager/Scrum master or
+	 responsible authority will take decision about when to deploy to production, provided its having impact huge on live users
+7)	Will contribute again after fixing the bug on various environments available
+8)	After testing resolved bug + all scenarios around the bug will flag according to the results of testing)	
+B)  Test cases for ATM	
+	Verify the ‘ATM Card Insertion Slot’ is as per the specification
+	Verify the ATM machine accepts card and PIN details
+	Verify the error message by inserting a card incorrectly
+	Verify the error message by inserting an invalid card (Expired Card)
+	Verify the error message by entering an incorrect PIN
+	Verify that PIN is encrypted
+	Verify the user is allowed to do only one cash withdrawal transaction per PIN request
+	Verify the machine logs out of the user session immediately after successful withdrawal
+	Verify the message when there is no money in the ATM
+	Verify the language selection functionality
+	Verify the cash withdrawal functionality by entering some valid amount
+	Verify the cash withdrawal functionality by entering an amount less than 100
+	Verify the cash withdrawal functionality by entering an amount greater than the total available balance in the account.
+C)  CardPayment merchant test Cases
+	UI Test Case – 
+1.	Check if all the labels and boxes are visible.
+2.	Verify the payment gateway company logo or name
+3.	Check if the credit card number is masked or not
+4.	Verify that all the payment options are visible
+
+Functional TestCases
+1.	Check if each of the payment options is selectable.
+2.	Check if the default credit/debit card gets automatically added
+3.	Verify that the page does not proceed to the payment page before all the mandatory information is filled.
+4.	Check if multiple cards can be saved as default or not.
+5.	Verify that the correct currency is reflected on the page.
+6.	Verify if multiple payment options are not getting selected. Only one at a time
+7.	Check if the payment is not getting proceeded with an expired/blocked card.
+8.	Check if the user gets a confirmation message or mail if the payment is successful.
+9.	Check if a pop-up appears if the session has expired.
+10.	Verify that the user gets information about unsuccessful payments.
+11.	Check what happens after the session gets expired. Does the payment still occur?
+12.	Check if the pop-up blocker during the payment is functional.
+
+Security Test cases
+1.	Verify if the credit card information is in a masked form.	
+2.	Verify if the OTP reaches only the verified number linked with the card.
+3.	Verify if the transaction gets cancelled if the wrong OTP is entered.
+4.	Check if the session gets expired within the specified time.
+5.	Verify that the person gets notified if the wrong OTP is entered 
+
+
+   
+
+
